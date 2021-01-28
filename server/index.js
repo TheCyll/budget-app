@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+app.use(cors());
 // parse body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -14,7 +15,6 @@ app.use(bodyParser.json());
 // routes
 app.use('/registry', registry);
 
-app.use(cors());
 // use the build once finished
 // app.use(express.static(path.join(__dirname, '..', 'build')));
 

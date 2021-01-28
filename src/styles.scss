@@ -1,0 +1,330 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+$bg-color: hsl(0, 0%, 20%);
+$bg-dark-color: hsl(0, 0%, 10%);
+$text-color: hsl(0, 0%, 75%);
+$primary-color: hsl(185, 75%, 60%);
+$secondary-color: hsl(65, 60%, 65%);
+
+$income-bg-color: hsl(130, 45%, 50%);
+$income-border-color: hsl(130, 45%, 30%);
+$outcome-bg-color: hsl(10, 45%, 50%);
+$outcome-border-color: hsl(10, 45%, 30%);
+
+body {
+  background-color: $bg-color;
+  font-family: Raleway, Arial, Helvetica, sans-serif;
+  color: $text-color;  
+}
+
+header {
+  background-color: $bg-dark-color;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  width: 100%;
+  padding: 20px 20px;   
+  position: fixed; 
+
+
+  nav {  
+    a {
+      color: $text-color;
+      text-decoration: none;
+      margin: 0 10px;
+
+      &:hover {
+        cursor: pointer;
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  header {
+    flex-direction: column;
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+  }  
+}
+
+.main-container {  
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;     
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    margin: 40px 0;   
+
+    .financial-report, .last-registries {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        margin-bottom: 20px;
+      }
+    }
+    .balance {
+      font-size: 3rem;
+    }
+    table {      
+      // width: 100%;
+
+      .income {
+        background-color: $income-bg-color;
+        border: solid 2px $income-border-color;
+        color: $income-border-color;
+      }
+
+      .outcome {
+        background-color: $outcome-bg-color;
+        border: solid 2px $outcome-border-color;
+        color: $outcome-border-color;
+      }
+      
+      th, td {
+        min-width: 120px; 
+        background-color: $bg-dark-color;
+        text-align: left;
+        font-size: 1.2rem;
+        padding: 10px;
+      }
+    }   
+
+  }
+}
+
+@media(max-width: 500px) {
+
+  .main-container .main-content {
+    margin: 80px 0; 
+  }
+}
+
+$form-input-color: hsl(0, 0%, 10%);
+$save-btn-bg-color: hsl(185, 75%, 60%);
+$save-btn-border-color: hsl(185, 75%, 30%);
+$error-bg-color: hsl(330, 80%, 40%);
+$error-border-color: hsl(330, 80%, 20%);
+$form-bg-color: hsl(420, 69%, 70%);
+
+.d-none {
+  display: none;
+}
+
+form { 
+  
+  background-color: $form-bg-color;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  max-width: 300px;
+  min-width: 200px;
+  color: $form-input-color; 
+
+  label {
+    margin: 10px;
+  }
+  input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    
+
+    &[type=number] {
+      width: 50%;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+    &[type=radio] {
+      margin-right: 10px;  
+      border: none;   
+    }
+  }
+
+  div {
+    display: flex;    
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  span {
+    font-size: 1rem;
+    background-color: $error-bg-color;
+    border: solid 2px $error-border-color;
+    width: max-content;
+    color: $form-input-color;
+    padding: 7px;
+  }
+
+  button {
+    margin-top: 30px;    
+    height: 35px;
+    width: 90px;
+    align-self: center;
+    border-radius: 15px;
+    border: solid 2px $save-btn-border-color;
+    color: $save-btn-border-color;
+    background-color: $save-btn-bg-color;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}
+
+$edit-btn-color: hsl(300, 70%, 30%);
+$delete-btn-color: hsl(0, 90%, 50%);
+$amount-color: hsl(245, 90%, 80%);
+
+
+.abm {
+
+  h3 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 2rem;
+  }
+
+  .table-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 900px;
+  
+    table {
+      border-spacing: 0;
+      margin-top: 10px;
+      
+      .td-btn {
+        display: flex;
+        justify-content: left;
+        max-width: 150px;        
+      } 
+      
+      th {
+        text-align: center;
+      }
+
+      td {   
+                    
+        span {
+          margin-right: 20px;
+          color: $bg-dark-color;          
+        }
+
+        div {          
+          button {
+            color: $text-color;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: center;
+
+            &:hover {
+              cursor: pointer;
+              transform: scale(1.1);
+            }
+          }
+          .edit{
+            background-color: $edit-btn-color;            
+          }
+          .delete {
+            margin-left: 10px;
+            background-color: $delete-btn-color;           
+          }
+        }
+      }
+    }    
+  }
+}
+
+@media(max-width: 520px){ 
+  .date {
+    display: none;
+  }
+}
+
+@media(max-width: 1200px){
+
+  .amb {
+
+    h3 {
+      text-align: center;
+    }
+  } 
+  
+  .table-container {
+    flex-direction: column;
+
+    table {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+$create-btn-bg-color: hsl(220, 50%, 70%);
+$create-btn-border-color: hsl(220, 50%, 30%);
+
+.create-btn-container {
+  
+  .create {   
+   
+    border: none;
+    background-color: $create-btn-bg-color;
+    border: solid 2px $create-btn-border-color;
+    padding: 10px;
+    width: 80px;
+    font-size: 1.05rem;
+    border-radius: 10px;
+    color: $create-btn-border-color; 
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.edit-container {
+  position: relative;
+  width: 0;
+  height: 0;
+
+  .edit-form {
+    position: absolute;
+    left: -6px;
+    top: 29px;
+    margin: 0;
+  }
+}
+  
+
+  
+
+

@@ -33,7 +33,7 @@ Solamente se deben seguir los siguientes pasos:
 
 1. Clonar el repositorio a su máquina local
 2. Entrar en el directorio del proyecto
-3. Ejecutar en la terminal el siguiente comando: ```npm run start app```
+3. Ejecutar en la terminal el siguiente comando: ```npm run start-app```
 4. Abrir en el navegador el servidor local en el puerto 3030, es decir: http://localhost:3030/
 5. Probar la app! (no se necesita configurar la base de datos, pues está servida con Mongo Atlas)
 

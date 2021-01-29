@@ -1,1 +1,1 @@
-export const API_URI = "http://localhost:3030";
+export const API_URI = window.location.origin;

@@ -9,13 +9,9 @@ const AbmPage = () => {
 
   const [registries, setRegistries] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-
-  // console.log(registries);
-  // console.log(pageCount);
    
   function pageIncrement() {
-    setPageCount(pageCount + 1);
-    console.log(pageCount);
+    setPageCount(pageCount + 1);    
   }
 
   useEffect(() => {
@@ -29,13 +25,8 @@ const AbmPage = () => {
         }
       }       
     }
-    // let mounted = true;
-    // if( mounted ) {
-    getAllRegistries();
-    // }
-    // return () => {
-    //   mounted = false;
-    // }    
+    
+    getAllRegistries();     
 
   }, [pageCount]);
 

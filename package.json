@@ -17,8 +17,7 @@
     "yup": "^0.32.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    
+    "start": "react-scripts start",    
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "cd server && npm start"
@@ -40,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "12.*"
   }
 }

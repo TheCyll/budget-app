@@ -8,7 +8,15 @@ import { toggleForm } from '../utils/utils';
 const AbmPage = () => {
 
   const [registries, setRegistries] = useState([]);
-  
+  const [pageCount, setPageCount] = useState(0);
+
+  // console.log(registries);
+  // console.log(pageCount);
+   
+  function pageIncrement() {
+    setPageCount(pageCount + 1);
+    console.log(pageCount);
+  }
 
   useEffect(() => {
     const getAllRegistries = async () => {
@@ -21,29 +29,27 @@ const AbmPage = () => {
         }
       }       
     }
-    let mounted = true;
-    if( mounted ) {
-      getAllRegistries();
-    }
+    // let mounted = true;
+    // if( mounted ) {
+    getAllRegistries();
+    // }
+    // return () => {
+    //   mounted = false;
+    // }    
 
-    return () => {
-      mounted = false;
-    }
-
-  }, [registries]);
+  }, [pageCount]);
 
   function handleSubmit( values ) {
 
     let { date } = values;
+    //If no date is submitted, create a new one
     if ( date === '') {
       values = { ...values , date: new Date() }       
     }
 
     const createRegister = async (obj) => {
       try {
-        const { data } = await axios.post(`${API_URI}/registry`, obj);
-        console.log(data)
-        
+        await axios.post(`${API_URI}/registry`, obj);
       } catch(err) {        
         if(err) {
           throw new Error(err.message);
@@ -51,7 +57,8 @@ const AbmPage = () => {
       }       
     }    
     createRegister(values);
-    toggleForm("create-form");
+    toggleForm("create-form");    
+    pageIncrement();
   } 
   
   function handleCreateClick() {
@@ -61,7 +68,7 @@ const AbmPage = () => {
   function handleDeleteClick(id) {
     const deleteRegister = async (id) => {
       try {
-        const { data } = await axios.delete(`${API_URI}/registry/${id}`); 
+        await axios.delete(`${API_URI}/registry/${id}`); 
         
       } catch(err) {        
         if(err) {
@@ -70,9 +77,8 @@ const AbmPage = () => {
       }       
     }    
     deleteRegister(id);
+    pageIncrement();
   }
-
-  
 
   return (
     <div className="main-content abm">
@@ -81,10 +87,12 @@ const AbmPage = () => {
         <button onClick={ handleCreateClick } className="create">Crear</button>
       </div>
       <FormBudget 
-        onHandleSubmit={ handleSubmit }        
         id="create-form"
+        onHandleSubmit={ handleSubmit }
+        isCreate={true}       
       />      
-      <TableContainer         
+      <TableContainer
+        onSubmitEdit={setPageCount}         
         allRegistries={ registries } 
         onhandleDeleteClick={ handleDeleteClick }
       />

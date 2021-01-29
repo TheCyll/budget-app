@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AbmTable from './AbmTable';
 
-const TableContainer = ({allRegistries, onhandleDeleteClick}) => {
+const TableContainer = ({allRegistries, onhandleDeleteClick, onSubmitEdit}) => {
   
   const [incomes, setIncomes] = useState([]);
-  const [outcomes, setOutcomes] = useState([]); 
+  const [outcomes, setOutcomes] = useState([]);   
 
   useEffect(() => {
 
@@ -17,20 +17,20 @@ const TableContainer = ({allRegistries, onhandleDeleteClick}) => {
     });
     setOutcomes(outcomeRegistries);     
     
-  }, [allRegistries]);
-  
-  
+  }, [allRegistries]); 
 
   return (
     <div className="table-container"> 
       <AbmTable 
         tableName="Ingresos" 
         categoryType={incomes} 
+        onSubmitEdit={ onSubmitEdit }
         handleDelete={ onhandleDeleteClick }        
       />
       <AbmTable 
         tableName="Egresos" 
         categoryType={outcomes} 
+        onSubmitEdit={ onSubmitEdit }
         handleDelete={ onhandleDeleteClick }        
       />
     </div>

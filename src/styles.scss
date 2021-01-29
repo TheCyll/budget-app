@@ -215,7 +215,7 @@ $amount-color: hsl(245, 90%, 80%);
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    max-width: 900px;
+    max-width: 900px;    
   
     table {
       border-spacing: 0;
@@ -259,6 +259,17 @@ $amount-color: hsl(245, 90%, 80%);
             background-color: $delete-btn-color;           
           }
         }
+      }
+    } 
+    
+    .table {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      form {
+        align-self: center;
       }
     }    
   }
@@ -311,19 +322,7 @@ $create-btn-border-color: hsl(220, 50%, 30%);
   }
 }
 
-.edit-container {
-  position: relative;
-  width: 0;
-  height: 0;
 
-  .edit-form {
-    position: absolute;
-    left: -6px;
-    top: 29px;
-    margin: 0;
-  }
-}
-  
 
   
 
